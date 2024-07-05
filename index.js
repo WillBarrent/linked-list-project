@@ -154,11 +154,16 @@ class LinkedList {
 
         let currentNode = this.at(index);
         currentNode = currentNode.nextNode;
-        
-        const prevNode = this.at(index - 1);
-        prevNode.nextNode = currentNode;
 
-        if (index === size - 1) {
+        if (index > 0) {
+            const prevNode = this.at(index - 1);
+            prevNode.nextNode = currentNode;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        if (index === size - 1 && index > 0) {
             this.tail = prevNode;
         }
 
